@@ -29,14 +29,14 @@ Begin["`Private`"];
 (*Initializing commands*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Initialize/reset association for commands*)
 
 
 commands=<||>; (*Creating an empty association*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Function to add a command*)
 
 
@@ -54,7 +54,7 @@ addCommand[s_List, {f1_,f2_}, "C->R"]:=(AppendTo[commands, StringSplit@# -> f1]&
   AppendTo[commands, StringSplit@# -> f2]& /@ StringReplace[s,"column"->"row"]);
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Loading test dataset*)
 
 
@@ -66,7 +66,7 @@ addCommand[s_List, {f1_,f2_}, "C->R"]:=(AppendTo[commands, StringSplit@# -> f1]&
 (*Data manipulation*)
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Viewing/selecting data*)
 
 
@@ -96,11 +96,11 @@ addCommand[{"column @Integer","show column @Integer","column @Integer","column @
 , show, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Show/select multiple columns/rows*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -109,7 +109,7 @@ show["Column"][n1_Integer,n2_Integer][data_Dataset]:=data[All,Range[n1,n2]]
 show["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[Range[n1,n2]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -120,11 +120,11 @@ addCommand[{"column @Integer to @Integer","column @Integer to column @Integer","
 , show, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Delete columns/rows*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -137,7 +137,7 @@ delete["Column"][n1_Integer,n2_Integer][data_Dataset]:=data[All,Drop[#,{n1,n2}]&
 delete["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[Drop[#,{n1,n2}]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -151,22 +151,22 @@ addCommand[{"show column except @Integer to @Integer","show column except @Integ
 , delete, "C->R"];
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Operations on entire data*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Dimensions*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
 dimensions[]:=Dimensions
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -188,7 +188,7 @@ transpose["Row"][n1_Integer,n2_Integer][data_Dataset]:=Transpose@data[n1;;n2]
 (*Note: Returns original data for some datasets*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -200,11 +200,11 @@ addCommand[{"transpose column @Integer","column @Integer transpose","rotate colu
 transpose, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Reverse*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -213,7 +213,7 @@ reverse["Column"][n1_Integer][data_Dataset]:=Reverse@data[All,n1]
 reverse["Row"][n1_Integer][data_Dataset]:=Reverse@data[n1]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -224,11 +224,11 @@ addCommand[{"reverse column @Integer","invert column @Integer","column @Integer 
 , reverse, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*MinMax*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -237,7 +237,7 @@ min["All"][][data_Dataset]:=Min@Select[NumberQ]@Flatten@Normal@data
 max["All"][][data_Dataset]:=Max@Select[NumberQ]@Flatten@Normal@data
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -256,15 +256,15 @@ addCommand[{"minimum","minimum data","minimum element","minimum element data"}
 (*Mathematical operations*)
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Arithmetic with columns/rows*************************)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Add********************************)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -273,7 +273,7 @@ add["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[{n1,n2},Plus@@@#&]
 (*Note: Row operations not working*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -283,11 +283,11 @@ addCommand[{"add column @Integer to column @Integer","add column @Integer column
 , add, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Subtract**************************)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -300,7 +300,7 @@ minus["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[{n1,n2},Subtract@@@#&]
 (*Note: Row operations not working*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -311,11 +311,11 @@ addCommand[{"column @Integer minus column @Integer","column @Integer - column @I
 , minus, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Multiply**********************************)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -324,7 +324,7 @@ multiply["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[{n1,n2},Times@@@#&]
 (*Note: Row operations not working*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -333,11 +333,11 @@ addCommand[{"multiply column @Integer with column @Integer","multiply column @In
 , multiply, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Divide***************************************)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -346,7 +346,7 @@ divide["Row"][n1_Integer,n2_Integer][data_Dataset]:=data[{n1,n2},Divide@@@#&]
 (*Note: Row operations not working; Infinities not displayed*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -355,15 +355,15 @@ addCommand[{"divide column @Integer with column @Integer","divide column @Intege
 , divide, "C->R"];
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Scalar operations on rows/columns*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Add*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -374,7 +374,7 @@ addC["Row",1][n1_Integer,c_][data_Dataset]:=data[n1,#+c&]
 addC["Row",-1][c_,n1_Integer][data_Dataset]:=data[n1,#+c&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -387,11 +387,11 @@ addCommand[{"column @Integer plus @Input","column @Integer + @Input"}
 , "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Subtract*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -408,7 +408,7 @@ minusC["Row",-1][c_,n1_Integer][data_Dataset]:=data[n1,c-#&]
 minusC["Row",1][n1_Integer,c_][data_Dataset]:=data[n1,#-c&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -423,11 +423,11 @@ addCommand[{"subtract column @Integer from @Input","subtract column @Integer @In
 , "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Multiply*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -438,7 +438,7 @@ multiplyC["Row",1][n1_Integer,c_][data_Dataset]:=data[n1, # c&]
 multiplyC["Row",-1][c_,n1_Integer][data_Dataset]:=data[n1, # c&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -453,11 +453,11 @@ addCommand[{"column @Integer times @Input","column @Integer * @Input","multiply 
 , "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Divide*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -468,7 +468,7 @@ divideC["Row",1][n1_Integer,c_][data_Dataset]:=data[n1,#+c&]
 divideC["Row",-1][c_,n1_Integer][data_Dataset]:=data[n1,#+c&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -486,11 +486,11 @@ addCommand[{"column @Integer divided by @Input","column @Integer / @Input","divi
 (*Statistics*)
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Single column/row operations*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Length*)
 
 
@@ -536,7 +536,7 @@ mean["Column"][n1_Integer][data_Dataset]:=N@data[Mean(*@*Select[NumberQ]*),n1]
 mean["Row"][n1_Integer][data_Dataset]:=N@data[n1,Mean(*@*Select[NumberQ]*)]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -545,11 +545,11 @@ addCommand[{"mean column @Integer","average column @Integer","arithmetic mean co
 , mean, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Median*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -558,7 +558,7 @@ median["Column"][n1_Integer][data_Dataset]:=N@data[Median@*Select[NumberQ],n1]
 median["Row"][n1_Integer][data_Dataset]:=N@data[n1,Median@*Select[NumberQ]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -566,11 +566,11 @@ addCommand[{"median column @Integer","column @Integer median"}
 , median, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Mode*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -579,7 +579,7 @@ mode["Column"][n1_Integer][data_Dataset]:=N@Normal@data[Commonest,n1]
 mode["Row"][n1_Integer][data_Dataset]:=N@Normal@data[n1,Commonest]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -588,11 +588,11 @@ addCommand[{"most common element column @Integer","mode column @Integer","column
 , mode, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Sum*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -601,7 +601,7 @@ sum["Column"][n1_Integer][data_Dataset]:=N@data[Total@*Select[NumberQ],n1]
 sum["Row"][n1_Integer][data_Dataset]:=N@data[n1,Total@*Select[NumberQ]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -610,11 +610,11 @@ addCommand[{"sum column @Integer","total column @Integer","sum element column @I
 , sum, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Standard deviation*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -623,7 +623,7 @@ standardDeviation["Column"][n1_Integer][data_Dataset]:=N@data[StandardDeviation@
 standardDeviation["Row"][n1_Integer][data_Dataset]:=N@data[n1,StandardDeviation@*Select[NumberQ]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -642,11 +642,11 @@ addCommand["row @Integer variance",#^2&@*standardDeviation["Row"]];
 *)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Minimum and maximum*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -669,7 +669,7 @@ min["Row"][n1_Integer][data_Dataset]:=N@Normal@data[n1,Min@*Select[NumberQ]]
 max["Row"][n1_Integer][data_Dataset]:=N@Normal@data[n1,Max@*Select[NumberQ]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -684,11 +684,11 @@ addCommand[{"maximum column @Integer","maximum element column @Integer","column 
 , max, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Plot column/row*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -701,7 +701,7 @@ logPlot["Row"][n1_Integer][data_Dataset]:=data[n1,ListLogPlot[#,Joined->True,Mes
 logLogPlot["Row"][n1_Integer][data_Dataset]:=data[n1,ListLogLogPlot[#,Joined->True,Mesh->All]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -715,11 +715,11 @@ addCommand[{"loglogplot column @Integer","log log plot column @Integer"}
 , logLogPlot, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*SortBy*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -728,7 +728,7 @@ sortBy["Column"][n1_Integer][data_Dataset]:=SortBy[data,#[[n1]]&]
 sortBy["Row"][n1_Integer][data_Dataset]:=Transpose@SortBy[Transpose@data,#[[n1]]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -736,11 +736,11 @@ addCommand[{"sort column @Integer","sort by column @Integer","column @Integer so
 , sortBy, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Find formula*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -749,7 +749,7 @@ findFormula["Column"][n1_Integer][data_Dataset]:=data[FindFormula[Select[#,Numbe
 findFormula["Row"][n1_Integer][data_Dataset]:=data[n1,FindFormula[Select[#,NumberQ],x]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -757,11 +757,11 @@ addCommand[{"equation column @Integer","formula column @Integer","fit formula co
 , findFormula, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Find sequence*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -770,7 +770,7 @@ findSequence["Column"][n1_Integer][data_Dataset]:=data[FindSequenceFunction[Sele
 findSequence["Row"][n1_Integer][data_Dataset]:=data[n1,FindSequenceFunction[Select[#,NumberQ],n]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -779,11 +779,11 @@ addCommand[{"sequence column @Integer","series column @Integer","next column @In
 , findSequence, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Find distribution*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -792,7 +792,7 @@ findDistribution["Column"][n1_Integer][data_Dataset]:=data[FindDistribution@Sele
 findDistribution["Row"][n1_Integer][data_Dataset]:=data[n1,FindDistribution@Select[#,NumberQ]&]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -800,11 +800,11 @@ addCommand[{"distribution column @Integer","probability distribution column @Int
 , findDistribution, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Histogram*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -813,7 +813,7 @@ histogram["Column"][n1_Integer][data_Dataset]:=data[Histogram,n1]
 histogram["Row"][n1_Integer][data_Dataset]:=data[n1,Histogram]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -822,11 +822,11 @@ addCommand[{"histogram column @Integer", "bar chart column @Integer", "column @I
 , histogram, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Pie chart*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -835,7 +835,7 @@ pieChart["Column"][n1_Integer][data_Dataset]:=data[PieChart,n1]
 pieChart["Row"][n1_Integer][data_Dataset]:=data[n1,PieChart]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -871,11 +871,11 @@ addCommand[{"linear fit column @Integer versus column @Integer","fit column @Int
 , linearFit, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Find formula*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Functions*)
 
 
@@ -884,7 +884,7 @@ findFormula["Column"][n1_Integer,n2_Integer][data_Dataset]:=FindFormula[Select[A
 findFormula["Row"][n1_Integer,n2_Integer][data_Dataset]:=FindFormula[Select[And@@(NumberQ/@#)&]@Normal@Transpose[data][All,{n2,n1}],"x",3]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -892,11 +892,11 @@ addCommand[{"formula column @Integer versus column @Integer","formula column @In
 , findFormula, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Correlation*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -904,7 +904,7 @@ correlate["Column"][n1_Integer,n2_Integer][data_Dataset]:=Correlation@@Select[Nu
 correlate["Row"][n1_Integer,n2_Integer][data_Dataset]:=Correlation@@Select[NumberQ]/@Transpose@Normal@Transpose[data][All,{n1,n2}]//N
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -912,11 +912,11 @@ addCommand[{"correlation column @Integer with column @Integer","correlation colu
 , correlate, "C->R"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Scatter plot*)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Functions*)
 
 
@@ -924,7 +924,7 @@ scatterPlot["Column"][n1_Integer,n2_Integer][data_Dataset]:=ListPlot[data[All,{n
 scatterPlot["Row"][n1_Integer,n2_Integer][data_Dataset]:=ListPlot[Transpose[data][All,{n2,n1}]]
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
@@ -968,11 +968,11 @@ addCommand[{"word cloud column @Integer","wordcloud column @Integer"}
 (*Geography********************)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Plot coordinates*********************************)
 
 
-(* ::Subsubsection::RGBColor[0.5, 0, 0.5]::Closed:: *)
+(* ::Subsubsection::RGBColor[0.5, 0, 0.5]:: *)
 (*Commands*)
 
 
